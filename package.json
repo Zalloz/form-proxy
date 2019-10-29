@@ -1,0 +1,27 @@
+{
+  "name": "zallo-proxy-jen",
+  "version": "1.0.0",
+  "description": "This is Jen's Proxy Server",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "test",
+    "server-dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZalloProject/jen-proxy.git"
+  },
+  "author": "Jen Nummerdor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZalloProject/jen-proxy/issues"
+  },
+  "homepage": "https://github.com/ZalloProject/jen-proxy#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "http-proxy-middleware": "^0.19.1"
+  }
+}

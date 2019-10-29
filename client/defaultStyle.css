@@ -1,0 +1,61 @@
+.container {
+  display: grid;
+  justify-content: center;
+  overflow: auto;
+}
+
+#photos {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+#gendesc {
+  position: absolute;
+  top: 500px;
+  left: 55px;
+  z-index: 0;
+  background: white;
+  font-family: arial;
+}
+
+#styles__calculatorMain___2v0RA {
+  padding: 10px;
+  left: 40%;
+}
+
+#form-service {
+  position: absolute;
+  top: 450px;
+  left: 700px;
+  z-index: 1;
+  background: white;
+}
+
+.style__formLabelCheckbox___1t8Eg {
+  font-family: 'arial';
+}
+
+.style__formInnerContainer___1H01l {
+  max-height: 780px
+}
+
+.style__formContainerP___1G_0D {
+  font-size: 12px;
+}
+
+.style__formInnerUpperContainer___2N1BK {
+  font-size: 12px;
+}
+
+#similar-homes {
+  position: absolute;
+  margin-top: 25px;
+  top: 1400px;
+  margin-left: 50px;
+  z-index: -1;
+}
+
+h1.style__similarHomesHeader__1rbsb {
+  margin-left: 230px;
+}

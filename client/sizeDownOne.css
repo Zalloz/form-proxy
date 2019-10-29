@@ -1,0 +1,98 @@
+.container {
+  display: grid;
+  justify-content: center;
+  overflow: auto;
+}
+
+#photos {
+  display: -webkit-inline-box;
+  zoom: 0.3;
+  margin-top: 50px;
+  margin-left: 80px;
+  padding: 5px;
+  overflow: scroll;
+}
+
+#gendesc {
+  display: -webkit-box;
+  margin-left: 80px;
+  zoom: 0.5;
+  font-family: arial;
+}
+
+#house-price {
+  margin-right: 125px;
+}
+
+.styles__containerFactsItems___3mAzb {
+  margin-right: 90px;
+}
+
+.styles__interiorContainerInterior___3NeMb{
+  margin-right: 110px;
+}
+
+#styles__calculatorMain___2v0RA {
+  font-size: 14px;
+  padding: 10px;
+  left: 25%;
+}
+
+#form-service {
+  display: -webkit-box;
+  zoom: 0.7;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 90px;
+}
+
+input[type="text"]{
+  font-family: 'arial';
+  font-size: 9px;
+}
+
+.style__formLabelCheckbox___1t8Eg {
+  font-family: 'arial';
+}
+
+.style__formInnerContainer___1H01l {
+  max-height: 780px
+}
+
+.style__formOuterContainer___12WXq {
+  display: block;
+  min-height: 830px;
+}
+
+.style__formInnerUpperContainer___2N1BK {
+  min-height: 400px;
+}
+
+.style__formContainerP___1G_0D {
+  font-size: 8.5px;
+  margin-top: 10px;
+}
+
+.style__formInnerLowerContainer___16-5P{
+  margin-top: 50px;
+}
+
+#similar-homes {
+  zoom: 0.5;
+  display: -webkit-box;
+  margin-left: -10px;
+  overflow: scroll;
+}
+
+h1.style__similarHomesHeader__1rbsb {
+  margin-left: 230px;
+}
+
+span.style__simHomesDays__1mXt1 {
+  margin: 0px 5px;
+  font-size: 9px;
+}
+
+button.style__similarHomesSeeAll__1uP5n {
+  margin-left: 265px;
+}
