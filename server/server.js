@@ -17,32 +17,36 @@ http.createServer(function (req, res) {
                 contentType = 'text/css'
                 hostJsOrCss()
             } else {
-                axios.get('http://localhost:8081/').then(reactHtmlString => {
-                    reactHtmlString = reactHtmlString.data
-                    res.writeHead(200, {
-                        'Content-Type': contentType,
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Headers": "X-Requested-With"
+                axios.get('http://localhost:8081/').then(reactFormHtmlString => {
+                    reactFormHtmlString = reactFormHtmlString.data
+                    axios.get('http://localhost:8082/').then(reactPhotosHtmlString => {
+                        reactPhotosHtmlString = reactPhotosHtmlString.data
+                        res.writeHead(200, {
+                            'Content-Type': contentType,
+                            "Access-Control-Allow-Origin": "*",
+                            "Access-Control-Allow-Headers": "X-Requested-With"
+                        })
+                        const html = `
+                            <!DOCTYPE html>
+                            <html lang="en">
+    
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                                <link href="http://localhost:8081/style.css" type="text/css" rel="stylesheet" />
+                                <title>Zalloz</title>
+                            </head>
+    
+                            <body>
+                                <div id="photos">${reactPhotosHtmlString}</div>
+                                <div id="form-service">${reactFormHtmlString}</div>
+                            </body>
+    
+                            </html>
+                        `
+                        res.end(html, 'utf-8')
                     })
-                    const html = `
-                        <!DOCTYPE html>
-                        <html lang="en">
-
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                            <link href="http://localhost:8081/style.css" rel="stylesheet" />
-                            <title>Zalloz</title>
-                        </head>
-
-                        <body>
-                            <div id="form-service">${reactHtmlString}</div>
-                        </body>
-
-                        </html>
-                    `
-                    res.end(html, 'utf-8')
                 })
             }
             function hostJsOrCss() {
