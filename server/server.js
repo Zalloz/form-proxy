@@ -18,10 +18,9 @@ http.createServer(function (req, res) {
                 hostJsOrCss()
             } else {
                 //
-                axios.get('http://ec2-3-17-68-94.us-east-2.compute.amazonaws.com/').then(reactFormHtmlString => {
-                    reactFormHtmlString = reactFormHtmlString.data
-                    axios.get('http://ec2-3-133-91-213.us-east-2.compute.amazonaws.com').then(reactPhotosHtmlString => {
-                        reactPhotosHtmlString = reactPhotosHtmlString.data
+                //Mike first, me second
+                Promise.all([axios.get('http://ec2-3-133-91-213.us-east-2.compute.amazonaws.com'), axios.get('http://ec2-3-17-68-94.us-east-2.compute.amazonaws.com/')])
+                    .then(reactHtmlStrings => {
                         res.writeHead(200, {
                             'Content-Type': contentType,
                             "Access-Control-Allow-Origin": "*",
@@ -35,20 +34,22 @@ http.createServer(function (req, res) {
                                 <meta charset="UTF-8">
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                                <link href="http://localhost:8081/style.css" type="text/css" rel="stylesheet" />
+                                <!-- <link href="http://localhost:8081/style.css" type="text/css" rel="stylesheet" /> -->
                                 <title>Zalloz</title>
                             </head>
     
                             <body>
-                                <div id="photos">${reactPhotosHtmlString}</div>
-                                <div id="form-service">${reactFormHtmlString}</div>
+                                <div id="photos">${reactHtmlStrings[0].data}</div>
+                                <div id="form-service">${reactFormHtmlString[1].data}</div>
                             </body>
     
                             </html>
                         `
                         res.end(html, 'utf-8')
                     })
-                })
+                    .catch(err => {
+                        //
+                    })
                 //
             }
             function hostJsOrCss() {
