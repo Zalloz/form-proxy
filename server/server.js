@@ -17,6 +17,7 @@ http.createServer(function (req, res) {
                 contentType = 'text/css'
                 hostJsOrCss()
             } else {
+                //
                 axios.get('http://ec2-3-17-68-94.us-east-2.compute.amazonaws.com/').then(reactFormHtmlString => {
                     reactFormHtmlString = reactFormHtmlString.data
                     axios.get('http://ec2-3-133-91-213.us-east-2.compute.amazonaws.com').then(reactPhotosHtmlString => {
@@ -48,6 +49,7 @@ http.createServer(function (req, res) {
                         res.end(html, 'utf-8')
                     })
                 })
+                //
             }
             function hostJsOrCss() {
                 fs.readFile(req.url === '/' ? publicDirectory + '/index.html' : publicDirectory + req.url, (err, content) => {
@@ -57,12 +59,20 @@ http.createServer(function (req, res) {
                         "Access-Control-Allow-Headers": "X-Requested-With"
                     })
                     res.end(content, 'utf-8');
+                    return
                 })
             }
+        } else if (req.url === `/loaderio-4226f44d88ed75d78799ce47575da37f/`) {
+            let verifyPath = path.join(__dirname, `loaderio-4226f44d88ed75d78799ce47575da37f/`)
+            fs.readFile(verifyPath, (err, verifyFile) => {
+                res.end(verifyFile, 'utf-8')
+                return
+            })
         }
     } else {
         res.write('Error!');
         res.end();
+        return
     }
 }).listen(80, function () {
     // console.log('Server started on port 8080');
