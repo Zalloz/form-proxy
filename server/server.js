@@ -17,9 +17,9 @@ http.createServer(function (req, res) {
                 contentType = 'text/css'
                 hostJsOrCss()
             } else {
-                axios.get('http://localhost:8081/').then(reactFormHtmlString => {
+                axios.get('http://ec2-3-17-68-94.us-east-2.compute.amazonaws.com/').then(reactFormHtmlString => {
                     reactFormHtmlString = reactFormHtmlString.data
-                    axios.get('http://localhost:8082/').then(reactPhotosHtmlString => {
+                    axios.get('http://ec2-3-133-91-213.us-east-2.compute.amazonaws.com').then(reactPhotosHtmlString => {
                         reactPhotosHtmlString = reactPhotosHtmlString.data
                         res.writeHead(200, {
                             'Content-Type': contentType,
@@ -64,6 +64,6 @@ http.createServer(function (req, res) {
         res.write('Error!');
         res.end();
     }
-}).listen(8080, function () {
+}).listen(80, function () {
     // console.log('Server started on port 8080');
 });
