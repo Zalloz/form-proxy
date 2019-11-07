@@ -40,7 +40,7 @@ http.createServer(function (req, res) {
     
                             <body>
                                 <div id="photos">${reactHtmlStrings[0].data}</div>
-                                <div id="form-service">${reactFormHtmlString[1].data}</div>
+                                <div id="form-service">${reactHtmlStrings[1].data}</div>
                             </body>
     
                             </html>
@@ -49,6 +49,7 @@ http.createServer(function (req, res) {
                     })
                     .catch(err => {
                         //
+                        // console.log(err)
                     })
                 //
             }
