@@ -1,21 +1,22 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const axios = require('axios')
+const axios = require('axios');
 
-const publicDirectory = path.join(__dirname, 'public')
+const publicDirectory = path.join(__dirname, 'public');
+const port = process.env.PORT || 80;
 
 http.createServer(function (req, res) {
     if (req.method === 'GET') {
         if (req.url === '/') {
             let contentType = 'text/html';
-            let extension = path.extname(req.url)
+            let extension = path.extname(req.url);
             if (extension === '.js') {
-                contentType = 'text/javascript'
-                hostJsOrCss()
+                contentType = 'text/javascript';
+                hostJsOrCss();
             } else if (extension === '.css') {
-                contentType = 'text/css'
-                hostJsOrCss()
+                contentType = 'text/css';
+                hostJsOrCss();
             } else {
                 //
                 //Mike first, me second
@@ -25,7 +26,7 @@ http.createServer(function (req, res) {
                             'Content-Type': contentType,
                             "Access-Control-Allow-Origin": "*",
                             "Access-Control-Allow-Headers": "X-Requested-With"
-                        })
+                        });
                         const html = `
                             <!DOCTYPE html>
                             <html lang="en">
@@ -44,38 +45,37 @@ http.createServer(function (req, res) {
                             </body>
     
                             </html>
-                        `
-                        res.end(html, 'utf-8')
+                        `;
+                        res.end(html, 'utf-8');
                     })
                     .catch(err => {
                         //
                         // console.log(err)
-                    })
+                    });
                 //
-            }
+            };
             function hostJsOrCss() {
                 fs.readFile(req.url === '/' ? publicDirectory + '/index.html' : publicDirectory + req.url, (err, content) => {
                     res.writeHead(200, {
                         'Content-Type': contentType,
                         "Access-Control-Allow-Origin": "*",
                         "Access-Control-Allow-Headers": "X-Requested-With"
-                    })
+                    });
                     res.end(content, 'utf-8');
-                    return
-                })
-            }
+                    return;
+                });
+            };
         } else if (req.url === `/loaderio-4226f44d88ed75d78799ce47575da37f/`) {
-            let verifyPath = path.join(__dirname, `loaderio-4226f44d88ed75d78799ce47575da37f/`)
+            let verifyPath = path.join(__dirname, `loaderio-4226f44d88ed75d78799ce47575da37f/`);
             fs.readFile(verifyPath, (err, verifyFile) => {
-                res.end('loaderio-4226f44d88ed75d78799ce47575da37f', 'utf-8')
-                return
-            })
-        }
+                res.end('loaderio-4226f44d88ed75d78799ce47575da37f', 'utf-8');
+                return;
+            });
+        };
     } else {
-        res.write('Error!');
-        res.end();
-        return
-    }
-}).listen(80, function () {
-    // console.log('Server started on port 8080');
+        res.end('Error!');
+        return;
+    };
+}).listen(port, function () {
+    console.log('Server started on port', port);
 });
