@@ -6,7 +6,7 @@ const axios = require('axios');
 
 setInterval(() => {
     console.log('Ping!')
-}, 5000)
+}, 25000)
 
 const publicDirectory = path.join(__dirname, 'public');
 const port = process.env.PORT || 80;
