@@ -4,6 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 
+setInterval(() => {
+    console.log('Ping!')
+}, 5000)
+
 const publicDirectory = path.join(__dirname, 'public');
 const port = process.env.PORT || 80;
 
