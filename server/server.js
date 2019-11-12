@@ -71,11 +71,11 @@ http.createServer(function (req, res) {
                 });
             };
         } else if (req.url === `/loaderio-4226f44d88ed75d78799ce47575da37f/`) {
-            let verifyPath = path.join(__dirname, `loaderio-4226f44d88ed75d78799ce47575da37f/`);
-            fs.readFile(verifyPath, (err, verifyFile) => {
-                res.end('loaderio-4226f44d88ed75d78799ce47575da37f', 'utf-8');
-                return;
-            });
+            res.end('loaderio-4226f44d88ed75d78799ce47575da37f', 'utf-8');
+            // let verifyPath = path.join(__dirname, `loaderio-4226f44d88ed75d78799ce47575da37f/`);
+            // fs.readFile(verifyPath, (err, verifyFile) => {
+            //     return;
+            // });
         };
     } else {
         res.end('Error!');
