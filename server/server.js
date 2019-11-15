@@ -13,6 +13,10 @@ const port = process.env.PORT || 80;
 
 http.createServer(function (req, res) {
     if (req.method === 'GET') {
+        if (req.url === `/loaderio-507e6ed0c4eb236bbf56eb51b7be316a/`) {
+            res.end('loaderio-507e6ed0c4eb236bbf56eb51b7be316a', 'utf-8')
+            return
+        }
         if (req.url === '/') {
             let contentType = 'text/html';
             let extension = path.extname(req.url);
