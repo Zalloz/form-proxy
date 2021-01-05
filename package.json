@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/Zalloz/form-proxy#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "newrelic": "^6.1.0"
   }
 }
